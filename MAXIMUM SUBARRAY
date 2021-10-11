@@ -1,0 +1,40 @@
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) 
+    {
+       /* THIS CODE IS NOT WORKING IF ALL THE ELEMENTS ARE NEGATIVE
+        int c=0 , m=INT_MIN;
+        //c=current sum 
+        //m= maximum sum
+        
+        for(int i=0; i<nums.size(); i++)
+        {
+            c=c+nums[i];
+            
+            if(c<0)   /*if current sum is negative then how will it become the                          maximum sum ? Therefor is c is -ve, then let it be 0.
+            {
+                c=0;
+            }
+            
+            if(c>m)   /*if current sum exceeds the maximum sum, then save the                           value of the current sum in the max sum.
+            {
+                m=c;
+            }
+        }
+        
+        return m;  //returning the maximum sum.
+    */
+        
+        //ANOTHER APPROACH
+        
+        int c=0,m=nums[0];
+        
+        for(int i=0; i<nums.size(); i++)
+        {
+            c= max(nums[i], c+nums[i]);
+            m=max(c,m);
+        }
+        
+        return m;
+    }
+};
