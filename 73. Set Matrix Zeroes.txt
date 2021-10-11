@@ -1,0 +1,36 @@
+class Solution {
+    public void setZeroes(int[][] matrix) {
+        int[][] copy = new int[matrix.length][matrix.length];
+        
+       //cloning original to copy 
+        for(int i = 0; i < matrix.length; i++)
+            copy[i] = matrix[i].clone();
+
+        //iterating to replace values
+          for(int i=0;i<matrix.length;i++){
+            for(int j=0;j<matrix[i].length;j++){
+                if(matrix[i][j]==0){
+                    makeColumnsRowsZero(i,j,copy);
+                    }
+                }
+            }
+        
+        //cloning output to original matrix
+        for(int i = 0; i < copy.length; i++)
+            matrix[i] = copy[i].clone();
+         
+       
+    }
+    public static void makeColumnsRowsZero(int i,int j,int[][] copy) {
+    //horizontal zeros
+    for(int z=0;z<copy[i].length;z++) {
+        copy[i][z]=0;
+    }
+    
+    //verticle zeros
+    for(int z=0;z<copy.length;z++) {
+        copy[z][j]=0;
+    }
+
+}
+}
