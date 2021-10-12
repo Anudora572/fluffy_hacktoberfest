@@ -1,0 +1,52 @@
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) 
+    {
+        int row=matrix.length;
+        int col=matrix[0].length;
+        List <Integer> list= new ArrayList<Integer> ();
+        //if row=0, return 0--> CORNER CASE
+        if(row==0)
+            return list;
+        //now we have 4 directions
+        // we also have to initilize 4 pointers
+        int d=0, top=0, bottom=row-1, left=0, right=col-1;
+        //we have to iterate while left right ko surpass nhi kr leta and top bottom ko
+        while(left<=right && top<=bottom)
+        {
+            if(d==0){
+                for(int i=left; i<=right; i++)
+                {
+                    list.add(matrix[top][i]);
+                }
+                d=1;
+                top++;
+            }
+            else if(d==1){
+                for(int i=top; i<=bottom; i++)
+                {
+                    list.add(matrix[i][right]);
+                }
+                d=2;
+                right--;
+            }
+            else if(d==2){
+                for(int i=right; i>=left; i--)
+                {
+                    list.add(matrix[bottom][i]);
+                }
+                d=3;
+                bottom--;
+            }
+            else if(d==3){
+                 for(int i=bottom; i>=top; i--)
+                {
+                    list.add(matrix[i][left]);
+                }
+                d=0;
+                left++;
+            }
+            
+        }
+        return list;
+    }
+}
